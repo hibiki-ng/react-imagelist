@@ -5,7 +5,7 @@ const ImageList = ({ images, onDelete, onImageClick }) => {
     <div>
       {images.map((image, index) => (
         <div key={index} style={{ display: 'inline-block', position: 'relative' }}>
-          <img src={image} alt="" style={{ width: '150px', margin: '5px' }} onClick={() => onImageClick(image)}/>
+          <img src={image} alt="" style={{ width: '250px', height: '250px', objectFit: 'cover', margin: '5px' }} className="image-thumbnail" onClick={() => onImageClick(image)}/>
           <button
             onClick={() => onDelete(index)}
             style={{
