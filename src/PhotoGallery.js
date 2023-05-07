@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ImageList = ({ images, onDelete, onImageClick }) => {
+// crée chaque image de la liste
+const PhotoGallery = ({ images, onDelete, onImageClick }) => {
   return (
     <div>
       {images.map((image, index) => (
@@ -27,4 +28,4 @@ const ImageList = ({ images, onDelete, onImageClick }) => {
   );
 };
 
-export default ImageList;
+export default PhotoGallery;

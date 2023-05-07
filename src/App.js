@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState, useRef } from 'react';
-import ImageList from './ImageList';
+import PhotoGallery from './PhotoGallery';
 
 function App() {
   // states
@@ -13,6 +12,7 @@ function App() {
   const fileInputRef = useRef(null);
 
   //handlers
+  // gère le drop des images
   const onDrop = (e) => {
     e.preventDefault();
     const files = Array.from(e.dataTransfer ? e.dataTransfer.files : e.target.files);
@@ -37,24 +37,27 @@ function App() {
     });
   
     if (e.target.files) {
-      e.target.value = null; // Reset the input value to allow selecting the same file again
+      e.target.value = null;
     }
   };
   
-
+  // fait un preventDefault sur le drag d'image pour éviter que l'image soit ouverte dans le navigateur
   const onDragOver = (e) => {
     e.preventDefault();
   };
 
+  // supprime une image de la liste
   const deleteImage = (index) => {
     setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
+  // affiche l'image en grand
   const onImageClick = (url) => {
     setSelectedImage(url);
     setIsModalVisible(true);
   };
 
+  // ouvre la fenêtre de sélection de fichier
   const openFileDialog = () => {
     fileInputRef.current.click();
   };
@@ -72,7 +75,7 @@ function App() {
 
         </div>
       </div>
-      <ImageList images={images} onDelete={deleteImage} onImageClick={onImageClick} />
+      <PhotoGallery images={images} onDelete={deleteImage} onImageClick={onImageClick} />
       {isModalVisible && (
         <div id="modalDiv" onClick={() => setIsModalVisible(false)}
         >
